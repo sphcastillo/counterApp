@@ -1,0 +1,13 @@
+#displayArea {
+    height: 50vh;
+    width: 50vw;
+    background-color: fuchsia; 
+    position: relative;
+}
+#displayArea > span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+

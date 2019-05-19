@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Counter App</title>
+        <link href="style.css" type="text/css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script>
+        var counter = 0;
+        var timerID = null;
+
+        
+        $(document).ready(function(){
+
+            $("#displayArea").on("click",increaseCounter);
+            $("#displayArea").on("mouseout",handleMouseout);
+            $("#displayArea").on("mouseover",handleMouseover);
+
+            function increaseCounter(){
+                counter ++;
+                updateDisplay();
+            }    
+
+            function decreaseCounter(){
+                if(counter <= 0){
+                    handleMouseover();
+                    counter = 0;
+                    return;
+                }
+                counter --;
+                updateDisplay();
+            }   
+
+            function handleMouseout(){
+                timerID = setInterval(decreaseCounter,500);    
+            }
+
+            function updateDisplay(){
+                $("#ourSpan").text(counter);    
+            }
+
+            function handleMouseover(){
+                clearTimeout(timerID);
+            }
+       
+        });
+
+
+        </script>
+    </head>
+    <body>
+        <div id="displayArea">
+            <span id="ourSpan">0</span>
+        </div>
+    </body>
+</html>
